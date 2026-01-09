@@ -243,7 +243,7 @@ async function selectorCategorys() {
       
   
         return `
-          <section class="product-card lista" data-productos="${producto.producto_id}">
+          <section class="product-card lista" data-productos ="${producto.producto_id}"data-aos="fade-up data-aos-delay="100">
             <div class="card">
               <img src="${imagen}"data-imagen-producto="${producto.producto_id}" class="card-img-top imagen-selector" alt="">
               <div class="card-body">
@@ -290,7 +290,11 @@ async function selectorCategorys() {
       }
 
   
-      agregarBotonesAlCarrito(botonesSelect);
+      agregarBotonesAlCarrito(botonesSelect);  
+
+      if (window.AOS) {
+       AOS.refresh();
+         }
      
     } else {
       listaProductos.innerHTML = `<p>No hay productos en esta categoría.</p>`;
@@ -324,7 +328,7 @@ async function selectorCategorys() {
    );
 
    if (filtradoCategoryYProduct.length > 0) {
-     filtradoCategoryYProduct.forEach(producto => {
+     filtradoCategoryYProduct.forEach((producto,index) => {
        const imagen = producto.imagenes?.[0]?.urls?.[0] || "img/default.png";
        console.log(imagen)
       
@@ -337,8 +341,9 @@ async function selectorCategorys() {
           
       
        listaProductos.insertAdjacentHTML("beforeend", `
-         <section class="product-card lista" data-productos="${producto.producto_id}">
-           <div class="card">
+         <section class="product-card lista" data-productos="${producto.producto_id}" data-aos="fade-up data-aos-delay="100"}"
+          data-aos-duration="600">
+           <div class="card"   >
              <img src="${imagen}"data-imagen-producto="${producto.producto_id}" " class="card-img-top imagen" alt="">
              <div class="card-body">
                <h5 class="card-title">${producto.nombre_producto}</h5>
@@ -388,6 +393,10 @@ async function selectorCategorys() {
       }
 
      agregarBotonesAlCarrito(botonesAgregar); 
+       if (window.AOS) {
+       AOS.refresh();
+        }
+
 
    } 
      else {
@@ -395,7 +404,9 @@ async function selectorCategorys() {
    }
         
 
-    }
+    }  
+
+    
   
    
     }

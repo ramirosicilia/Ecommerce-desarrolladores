@@ -41,7 +41,7 @@ label {
 
 .form__recuperacion {
   display: flex;
-  width: 35%;
+  width: 30%;
   height: 30rem;
   flex-direction: column;
   justify-content: center;
